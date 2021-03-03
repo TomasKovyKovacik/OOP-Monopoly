@@ -2,11 +2,9 @@ package sk.stuba.fei.uim.oop.tiles;
 
 import sk.stuba.fei.uim.oop.player.Player;
 
-public class Police extends Tile {
-
+public class IncomeTax extends Tile {
     @Override
     public void activate(Player player) {
-        System.out.println("You are arrested and you going to PRISON");
-        player.setTurnsInPrison(3);
+
     }
 }
