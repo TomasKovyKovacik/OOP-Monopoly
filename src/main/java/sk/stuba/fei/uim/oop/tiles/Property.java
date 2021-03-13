@@ -34,10 +34,15 @@ public abstract class Property extends Tile {
             int input = ZKlavesnice.readInt("1 for YES and 0 for NO");
             if (input == 1) {
                 this.owner = player;
+                player.addProperty(this);
                 player.payMoney(this.propertyPrice);
             }
         } else {
             System.out.println("You don't have enough money for buy this property!");
         }
+    }
+
+    public void removeOwner() {
+        this.owner = null;
     }
 }

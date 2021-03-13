@@ -1,5 +1,9 @@
 package sk.stuba.fei.uim.oop.player;
 
+import sk.stuba.fei.uim.oop.tiles.Property;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Player {
@@ -9,6 +13,7 @@ public class Player {
     private int position;
     private boolean active;
     private int turnsInPrison;
+    private List<Property> properties;
 
     private Random dice;
 
@@ -17,6 +22,7 @@ public class Player {
         this.money = 20000;
         this.position = 0;
         this.dice = new Random();
+        this.properties = new ArrayList<>();
         this.active = true;
     }
 
@@ -37,8 +43,9 @@ public class Player {
         this.turnsInPrison--;
     }
 
-    public void setTurnsInPrison(int turnsInPrison) {
+    public void setTurnsInPrison(int turnsInPrison, int prisonPosition) {
         this.turnsInPrison = turnsInPrison;
+        this.position = prisonPosition;
     }
 
     public String getName() {
@@ -66,6 +73,7 @@ public class Player {
         if (this.money < amount) {
             System.out.println("Don't have enough money for pay! YOU LOSE");
             this.active = false;
+            this.removeProperties();
             if (receiver != null) {
                 receiver.addMoney(this.money);
             }
@@ -83,5 +91,14 @@ public class Player {
 
     public void addMoney(int amount) {
         this.money += amount;
+    }
+
+    public void addProperty(Property property) {
+        this.properties.add(property);
+    }
+
+    private void removeProperties() {
+        this.properties.forEach(Property::removeOwner);
+        this.properties.clear();
     }
 }

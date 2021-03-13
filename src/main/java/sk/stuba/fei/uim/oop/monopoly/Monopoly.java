@@ -4,9 +4,6 @@ import sk.stuba.fei.uim.oop.player.Player;
 import sk.stuba.fei.uim.oop.tiles.*;
 import sk.stuba.fei.uim.oop.tiles.card.*;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Monopoly {
@@ -30,7 +27,7 @@ public class Monopoly {
         List<Card> chanceCards = List.of(
                 new BirthdayCard(),
                 new CarRepairCard(),
-                new GoToPrisonCard(),
+                new GoToPrisonCard(6),
                 new TaxCard(),
                 new CompetitionWinnerCard()
         );
@@ -54,7 +51,7 @@ public class Monopoly {
                 chance,
                 new Street(8500, 1700, "Evening Street"),
                 new Street(9000, 1800, "Midnight Street"),
-                new Police(),
+                new Police(6),
                 new Street(10000, 2000, "Typescript Street"),
                 new Street(12000, 2500, "C++ Street"),
                 chance,
